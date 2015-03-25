@@ -1,0 +1,276 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/mauryaempire/.nvm/v0.11.14/bin/node',
+1 verbose cli   '/home/mauryaempire/.nvm/v0.11.14/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '–save',
+1 verbose cli   'hapi' ]
+2 info using npm@2.0.0
+3 info using node@v0.11.14
+4 warn package.json api@0.0.1 No README data
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ '–save', null ]
+7 verbose cache add spec="–save" args=["–save",null]
+8 verbose parsed spec { raw: '–save',
+8 verbose parsed spec   scope: null,
+8 verbose parsed spec   name: null,
+8 verbose parsed spec   rawSpec: '–save',
+8 verbose parsed spec   spec: '/home/mauryaempire/Documents/work/projects/api/–save',
+8 verbose parsed spec   type: 'local' }
+9 verbose cache add [ 'hapi', null ]
+10 verbose cache add spec="hapi" args=["hapi",null]
+11 verbose parsed spec { raw: 'hapi',
+11 verbose parsed spec   scope: null,
+11 verbose parsed spec   name: 'hapi',
+11 verbose parsed spec   rawSpec: '',
+11 verbose parsed spec   spec: '*',
+11 verbose parsed spec   type: 'range' }
+12 verbose parsed spec { raw: '/home/mauryaempire/Documents/work/projects/api/–save',
+12 verbose parsed spec   scope: null,
+12 verbose parsed spec   name: null,
+12 verbose parsed spec   rawSpec: '/home/mauryaempire/Documents/work/projects/api/–save',
+12 verbose parsed spec   spec: '/home/mauryaempire/Documents/work/projects/api/–save',
+12 verbose parsed spec   type: 'local' }
+13 verbose parsed spec { raw: 'hapi',
+13 verbose parsed spec   scope: null,
+13 verbose parsed spec   name: 'hapi',
+13 verbose parsed spec   rawSpec: '',
+13 verbose parsed spec   spec: '*',
+13 verbose parsed spec   type: 'range' }
+14 verbose addNamed [ 'hapi', '*' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile e51ba6cc-hapi hapi@*
+17 verbose lock hapi@* /home/mauryaempire/.npm/e51ba6cc-hapi.lock
+18 silly addNameRange { name: 'hapi', range: '*', hasData: false }
+19 verbose mapToRegistry name hapi
+20 verbose mapToRegistry uri https://registry.npmjs.org/hapi
+21 verbose request on initialization, where is /hapi
+22 verbose request after pass 1, where is /hapi
+23 verbose request url raw /hapi
+24 verbose request resolving registry [ 'https://registry.npmjs.org/', './hapi' ]
+25 verbose request after pass 2, where is https://registry.npmjs.org/hapi
+26 verbose request no auth needed
+27 info attempt registry request try #1 at 12:36:36
+28 verbose request id 5fbac38589cfb8a9
+29 http request GET https://registry.npmjs.org/hapi
+30 http 200 https://registry.npmjs.org/hapi
+31 silly registry.get cb [ 200,
+31 silly registry.get   { date: 'Wed, 25 Mar 2015 07:06:38 GMT',
+31 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+31 silly registry.get     etag: '"F1YUO84JU976B79KCP6VD0FBY"',
+31 silly registry.get     'content-type': 'application/json',
+31 silly registry.get     'cache-control': 'max-age=60',
+31 silly registry.get     'content-length': '251071',
+31 silly registry.get     'accept-ranges': 'bytes',
+31 silly registry.get     via: '1.1 varnish',
+31 silly registry.get     age: '0',
+31 silly registry.get     'x-served-by': 'cache-sn86-SIN',
+31 silly registry.get     'x-cache': 'HIT',
+31 silly registry.get     'x-cache-hits': '1',
+31 silly registry.get     'x-timer': 'S1427267197.970867,VS0,VE204',
+31 silly registry.get     vary: 'Accept',
+31 silly registry.get     connection: 'close' } ]
+32 silly addNameRange number 2 { name: 'hapi', range: '*', hasData: true }
+33 silly addNameRange versions [ 'hapi',
+33 silly addNameRange   [ '0.0.1',
+33 silly addNameRange     '0.0.2',
+33 silly addNameRange     '0.0.3',
+33 silly addNameRange     '0.0.4',
+33 silly addNameRange     '0.0.5',
+33 silly addNameRange     '0.0.6',
+33 silly addNameRange     '0.1.0',
+33 silly addNameRange     '0.1.1',
+33 silly addNameRange     '0.1.2',
+33 silly addNameRange     '0.1.3',
+33 silly addNameRange     '0.2.0',
+33 silly addNameRange     '0.2.1',
+33 silly addNameRange     '0.3.0',
+33 silly addNameRange     '0.4.0',
+33 silly addNameRange     '0.4.1',
+33 silly addNameRange     '0.4.2',
+33 silly addNameRange     '0.4.3',
+33 silly addNameRange     '0.4.4',
+33 silly addNameRange     '0.5.0',
+33 silly addNameRange     '0.5.1',
+33 silly addNameRange     '0.6.0',
+33 silly addNameRange     '0.6.1',
+33 silly addNameRange     '0.5.2',
+33 silly addNameRange     '0.7.0',
+33 silly addNameRange     '0.7.1',
+33 silly addNameRange     '0.8.0',
+33 silly addNameRange     '0.8.1',
+33 silly addNameRange     '0.8.2',
+33 silly addNameRange     '0.8.3',
+33 silly addNameRange     '0.8.4',
+33 silly addNameRange     '0.9.0',
+33 silly addNameRange     '0.9.1',
+33 silly addNameRange     '0.9.2',
+33 silly addNameRange     '0.10.0',
+33 silly addNameRange     '0.10.1',
+33 silly addNameRange     '0.11.0',
+33 silly addNameRange     '0.11.1',
+33 silly addNameRange     '0.11.2',
+33 silly addNameRange     '0.11.3',
+33 silly addNameRange     '0.12.0',
+33 silly addNameRange     '0.13.0',
+33 silly addNameRange     '0.13.1',
+33 silly addNameRange     '0.13.2',
+33 silly addNameRange     '0.11.4',
+33 silly addNameRange     '0.13.3',
+33 silly addNameRange     '0.14.0',
+33 silly addNameRange     '0.14.1',
+33 silly addNameRange     '0.14.2',
+33 silly addNameRange     '0.15.0',
+33 silly addNameRange     '0.15.1',
+33 silly addNameRange     '0.15.2',
+33 silly addNameRange     '0.15.3',
+33 silly addNameRange     '0.15.4',
+33 silly addNameRange     '0.15.5',
+33 silly addNameRange     '0.15.6',
+33 silly addNameRange     '0.15.7',
+33 silly addNameRange     '0.15.8',
+33 silly addNameRange     '0.15.9',
+33 silly addNameRange     '0.16.0',
+33 silly addNameRange     '1.0.0',
+33 silly addNameRange     '1.0.1',
+33 silly addNameRange     '1.0.2',
+33 silly addNameRange     '1.0.3',
+33 silly addNameRange     '1.1.0',
+33 silly addNameRange     '1.2.0',
+33 silly addNameRange     '1.3.0',
+33 silly addNameRange     '1.4.0',
+33 silly addNameRange     '1.5.0',
+33 silly addNameRange     '1.6.0',
+33 silly addNameRange     '1.6.1',
+33 silly addNameRange     '1.6.2',
+33 silly addNameRange     '1.7.0',
+33 silly addNameRange     '1.7.1',
+33 silly addNameRange     '1.7.2',
+33 silly addNameRange     '1.7.3',
+33 silly addNameRange     '1.8.0',
+33 silly addNameRange     '1.8.1',
+33 silly addNameRange     '1.8.2',
+33 silly addNameRange     '1.8.3',
+33 silly addNameRange     '1.9.0',
+33 silly addNameRange     '1.9.1',
+33 silly addNameRange     '1.9.2',
+33 silly addNameRange     '1.9.3',
+33 silly addNameRange     '1.9.4',
+33 silly addNameRange     '1.9.5',
+33 silly addNameRange     '1.9.6',
+33 silly addNameRange     '1.9.7',
+33 silly addNameRange     '1.10.0',
+33 silly addNameRange     '1.11.0',
+33 silly addNameRange     '1.11.1',
+33 silly addNameRange     '1.12.0',
+33 silly addNameRange     '1.13.0',
+33 silly addNameRange     '1.14.0',
+33 silly addNameRange     '1.15.0',
+33 silly addNameRange     '1.16.0',
+33 silly addNameRange     '1.16.1',
+33 silly addNameRange     '1.17.0',
+33 silly addNameRange     '1.18.0',
+33 silly addNameRange     '1.19.0',
+33 silly addNameRange     '1.19.1',
+33 silly addNameRange     '1.19.2',
+33 silly addNameRange     '1.19.3',
+33 silly addNameRange     '1.19.4',
+33 silly addNameRange     '1.19.5',
+33 silly addNameRange     '1.20.0',
+33 silly addNameRange     '2.0.0-preview',
+33 silly addNameRange     '0.5.1-a',
+33 silly addNameRange     '0.5.1-b',
+33 silly addNameRange     '0.5.1-b2',
+33 silly addNameRange     '0.5.1-c',
+33 silly addNameRange     '2.0.0',
+33 silly addNameRange     '2.1.0',
+33 silly addNameRange     '2.1.1',
+33 silly addNameRange     '2.1.2',
+33 silly addNameRange     '2.2.0',
+33 silly addNameRange     '2.3.0',
+33 silly addNameRange     '2.4.0',
+33 silly addNameRange     '2.5.0',
+33 silly addNameRange     '2.6.0',
+33 silly addNameRange     '3.0.0',
+33 silly addNameRange     '3.0.1',
+33 silly addNameRange     '3.0.2',
+33 silly addNameRange     '3.1.0',
+33 silly addNameRange     '4.0.0',
+33 silly addNameRange     '4.0.1',
+33 silly addNameRange     '4.0.2',
+33 silly addNameRange     '4.0.3',
+33 silly addNameRange     '4.1.0',
+33 silly addNameRange     '4.1.1',
+33 silly addNameRange     '4.1.2',
+33 silly addNameRange     '4.1.3',
+33 silly addNameRange     '4.1.4',
+33 silly addNameRange     '5.0.0',
+33 silly addNameRange     '5.1.0',
+33 silly addNameRange     '6.0.0',
+33 silly addNameRange     '6.0.1',
+33 silly addNameRange     '6.0.2',
+33 silly addNameRange     '6.1.0',
+33 silly addNameRange     '6.2.0',
+33 silly addNameRange     '6.2.1',
+33 silly addNameRange     '6.2.2',
+33 silly addNameRange     '6.3.0',
+33 silly addNameRange     '6.4.0',
+33 silly addNameRange     '6.5.0',
+33 silly addNameRange     '6.5.1',
+33 silly addNameRange     '6.6.0',
+33 silly addNameRange     '6.7.0',
+33 silly addNameRange     '6.7.1',
+33 silly addNameRange     '6.8.0',
+33 silly addNameRange     '6.8.1',
+33 silly addNameRange     '6.9.0',
+33 silly addNameRange     '6.10.0',
+33 silly addNameRange     '6.11.0',
+33 silly addNameRange     '6.11.1',
+33 silly addNameRange     '7.0.0',
+33 silly addNameRange     '7.0.1',
+33 silly addNameRange     '7.1.0',
+33 silly addNameRange     '7.1.1',
+33 silly addNameRange     '7.2.0',
+33 silly addNameRange     '7.3.0',
+33 silly addNameRange     '7.4.0',
+33 silly addNameRange     '7.5.0',
+33 silly addNameRange     '7.5.1',
+33 silly addNameRange     '7.5.2',
+33 silly addNameRange     '8.0.0',
+33 silly addNameRange     '7.5.3',
+33 silly addNameRange     '8.1.0',
+33 silly addNameRange     '8.2.0',
+33 silly addNameRange     '8.3.0',
+33 silly addNameRange     '8.3.1',
+33 silly addNameRange     '8.4.0' ] ]
+34 verbose addNamed [ 'hapi', '8.4.0' ]
+35 verbose addNamed [ '8.4.0', '8.4.0' ]
+36 silly lockFile 898488fe-hapi-8-4-0 hapi@8.4.0
+37 verbose lock hapi@8.4.0 /home/mauryaempire/.npm/898488fe-hapi-8-4-0.lock
+38 silly lockFile f5439a5d-ry-npmjs-org-hapi-hapi-8-4-0-tgz https://registry.npmjs.org/hapi/-/hapi-8.4.0.tgz
+39 verbose lock https://registry.npmjs.org/hapi/-/hapi-8.4.0.tgz /home/mauryaempire/.npm/f5439a5d-ry-npmjs-org-hapi-hapi-8-4-0-tgz.lock
+40 verbose addRemoteTarball [ 'https://registry.npmjs.org/hapi/-/hapi-8.4.0.tgz',
+40 verbose addRemoteTarball   '14237847ac107076d4b32eb864de60f4bbdeb5f9' ]
+41 info retry fetch attempt 1 at 12:36:39
+42 info attempt registry request try #1 at 12:36:39
+43 http fetch GET https://registry.npmjs.org/hapi/-/hapi-8.4.0.tgz
+44 http fetch 200 https://registry.npmjs.org/hapi/-/hapi-8.4.0.tgz
+45 silly fetchAndShaCheck shasum 14237847ac107076d4b32eb864de60f4bbdeb5f9
+46 silly lockFile f5439a5d-ry-npmjs-org-hapi-hapi-8-4-0-tgz https://registry.npmjs.org/hapi/-/hapi-8.4.0.tgz
+47 silly lockFile f5439a5d-ry-npmjs-org-hapi-hapi-8-4-0-tgz https://registry.npmjs.org/hapi/-/hapi-8.4.0.tgz
+48 silly lockFile 898488fe-hapi-8-4-0 hapi@8.4.0
+49 silly lockFile 898488fe-hapi-8-4-0 hapi@8.4.0
+50 silly lockFile e51ba6cc-hapi hapi@*
+51 silly lockFile e51ba6cc-hapi hapi@*
+52 verbose stack Error: couldn't figure out how to install /home/mauryaempire/Documents/work/projects/api/–save
+52 verbose stack     at addNonLocal (/home/mauryaempire/.nvm/v0.11.14/lib/node_modules/npm/lib/cache.js:309:12)
+52 verbose stack     at /home/mauryaempire/.nvm/v0.11.14/lib/node_modules/npm/lib/cache.js:278:20
+52 verbose stack     at Object.oncomplete (evalmachine.<anonymous>:93:15)
+53 verbose cwd /home/mauryaempire/Documents/work/projects/api
+54 error Linux 3.16.7.7-1-MANJARO
+55 error argv "/home/mauryaempire/.nvm/v0.11.14/bin/node" "/home/mauryaempire/.nvm/v0.11.14/bin/npm" "install" "–save" "hapi"
+56 error node v0.11.14
+57 error npm  v2.0.0
+58 error couldn't figure out how to install /home/mauryaempire/Documents/work/projects/api/–save
+59 error If you need help, you may report this error at:
+59 error     <http://github.com/npm/npm/issues>
+60 verbose exit [ 1, true ]

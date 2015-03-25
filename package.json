@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "version": "0.0.1",
+  "description": "Distributed Library management system ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/distributed-library/api.git"
+  },
+  "author": "Sanjiv Jha, Anil Maurya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/distributed-library/api/issues"
+  },
+  "homepage": "https://github.com/distributed-library/api",
+  "keywords": [
+    "distributed",
+    "library"
+  ],
+  "dependencies": {
+    "hapi": "^8.4.0"
+  }
+}
