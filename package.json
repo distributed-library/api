@@ -21,6 +21,8 @@
     "library"
   ],
   "dependencies": {
-    "hapi": "^8.4.0"
+    "hapi": "^8.4.0",
+    "hapi-mongodb": "^2.3.0",
+    "mongoose": "^4.0.0"
   }
 }
