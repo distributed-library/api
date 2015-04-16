@@ -1,7 +1,7 @@
 var Hapi = require('hapi');
 var Good = require('good');
-var db = require('./database');
-//var config = require('./config');
+var db = require('./config/database');
+var Routes = require('./routes');
 var server = new Hapi.Server();
 server.connection({ port: (process.env.PORT || 5000) });
 
@@ -21,6 +21,7 @@ server.route({
     }
 });
 
+server.route(Routes.endpoints);
 
 server.register({
     register: Good,
