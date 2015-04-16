@@ -22,8 +22,6 @@
   ],
   "dependencies": {
     "hapi": "^8.4.0",
-    "hapi-mongo-models": "^2.0.2",
-    "hapi-mongodb": "^2.3.0",
     "jade": "^1.9.2",
     "mongodb": "^2.0.27",
     "mongoose": "^4.0.0"
