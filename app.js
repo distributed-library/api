@@ -1,17 +1,15 @@
 var Hapi = require('hapi');
 var Good = require('good');
 var db = require('./database');
-var config = require('./config');
+//var config = require('./config');
 var server = new Hapi.Server();
 server.connection({ port: (process.env.PORT || 5000) });
-
-server.views(config.options.views);
 
 server.route({
     method: 'GET',
     path: '/',
     handler: function (request, reply) {
-        reply.view('index');
+        reply('Hello');
     }
 });
 
