@@ -15,8 +15,23 @@ var UserSchema = new Schema({
 
     /** 
      *     User Name. It can only contain string, is required field.
+
      *       */
-    username : { type: String, required: true },
+    // saves user email, validation of email address is done in paylod
+    userName: {
+        type: String,
+        unique: true,
+        required: true
+    },
+        // hashed password is saved
+    password: {
+        type: String,
+        required: true
+    },
+    isVerified: {
+        type: Boolean,
+        default: false
+    }
 
 });
 

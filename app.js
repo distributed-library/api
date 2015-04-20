@@ -23,6 +23,27 @@ server.route({
 
 server.route(Routes.endpoints);
 
+// Validate function to be injected 
+var validate = function(token, callback) {
+    // Check token timestamp
+    var diff = Moment().diff(Moment(token.iat * 1000));
+    if (diff > ttl) {
+        return callback(null, false);
+    }
+    callback(null, true, token);
+};
+// Plugins
+server.register([{
+    register: require('hapi-auth-jwt')
+}], function(err) {
+    server.auth.strategy('token', 'jwt', {
+        validateFunc: validate,
+        key: privateKey
+    });
+
+    server.route(Routes.endpoints);
+});
+
 server.register({
     register: Good,
     options: {
