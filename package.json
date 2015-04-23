@@ -29,6 +29,7 @@
     "jsonwebtoken": "^5.0.0",
     "moment": "^2.10.2",
     "mongodb": "^2.0.27",
-    "mongoose": "^4.0.0"
+    "mongoose": "^4.0.0",
+    "passport": "^0.2.1"
   }
 }
