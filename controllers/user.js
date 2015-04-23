@@ -4,6 +4,8 @@ var Joi = require('joi'),
     mongoose = require('mongoose');
     Utils = require('../lib/utils')
 var privateKey = process.env.PRIVATE_PASSPHARSE;
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 exports.getAll = {
     handler:  function(request, reply){
@@ -40,7 +42,7 @@ exports.create = {
         user.save(function(err, user){
           if(!err){
               var tokenData = {
-                userName: user.userName;
+                userName: user.userName,
                 id: user._id
               };
               Utils.sentMailVerificationLink(user,Jwt.sign(tokenData, privateKey)); 
@@ -62,45 +64,36 @@ function handle_login_error(err, reply){
 }
 
 function login(user, request, reply){
-  if (request.payload.password === Common.decrypt(user.password)) {
-    if(!user.isVerified) return reply("Your email address is not verified. please verify your email address to proceed");
-    var tokenData = {
-      username: user.userName,
-      scope: [user.scope],
-      id: user._id
-    };
-    var res = {
-      username: user.userName,
-      scope: user.scope,
-      token: Jwt.sign(tokenData, privateKey)
-    };
-    reply(res);
-  }  
-  else{
-   reply(Boom.forbidden("invalid username or password"));
-  }
-
+  
 
 }
 
 exports.login = {
   validate: {
     payload: {
-      userName: Joi.string().email().required(),
+      email: Joi.string().email().required(),
       password: Joi.string().required()
     }
-
   },
+
   handler: function(request, reply){
-    User.findUser(request.payload.userName, function(err, user) {
-      if(!err){
-        if (user === null) return reply(Boom.forbidden("invalid username or password"));    
-        login(user, request, reply);        
-      } else {
-        handle_login_error(err, reply)
+    User.authenticate()(request.payload.email, request.payload.password, function (err, user, message) {
+      // There has been an error, do something with it. I just print it to console for demo purposes.
+      message = {};
+      if (err) {
+          console.error(err);
+          message = {error: 'Failed to login'}
+          return reply(message);
       }
-      
-    });
+
+      // If the authentication failed user will be false. If it's not false, we store the user
+      // in our session and redirect the user to the hideout
+      if (user) {
+          request.auth.session.set(user);
+          return reply({success: true});
+      }
+      return reply(message);
+    });     
   }
 } 
 

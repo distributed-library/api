@@ -3,6 +3,8 @@ var Good = require('good');
 var db = require('./config/database');
 var Routes = require('./routes');
 var server = new Hapi.Server();
+var privateKey = process.env.PRIVATE_PASSPHARSE;
+console.log(privateKey);
 server.connection({ port: (process.env.PORT || 5000) });
 
 server.route({

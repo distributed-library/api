@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    passportLocalMongoose = require('passport-local-mongoose');  ;
 
 /**
  *   * @module  User
@@ -23,6 +24,12 @@ var UserSchema = new Schema({
         unique: true,
         required: true
     },
+    email: {
+      type: String,
+      unique: true,
+      required: true
+
+    },
         // hashed password is saved
     password: {
         type: String,
@@ -34,6 +41,8 @@ var UserSchema = new Schema({
     }
 
 });
+
+UserSchema.plugin(passportLocalMongoose, { usernameField: 'email', hashField: 'password', usernameLowerCase: true });  
 
 var user = mongoose.model('user', UserSchema);
 
