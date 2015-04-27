@@ -1,8 +1,9 @@
 var Joi = require('joi'),
     Boom = require('boom'),
     User = require('../models/user').User,
-    mongoose = require('mongoose');
-    Utils = require('../lib/utils')
+    mongoose = require('mongoose'),
+    Utils = require('../lib/utils'),
+    Jwt = require('hapi-auth-jwt');
 var privateKey = process.env.PRIVATE_PASSPHARSE;
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -30,23 +31,19 @@ exports.getOne = {
 };
 
 exports.create = {
-    validate: {
-        payload: {
-            username: Joi.string().required(),
-            password: Joi.string().required()
-        }
-    },
     handler: function(request, reply){
         request.payload.password = Utils.encrypt(request.payload.password)
+        console.log(Utils);
         var user = new User(request.payload);
         user.save(function(err, user){
           if(!err){
               var tokenData = {
-                userName: user.userName,
+                username: user.username,
                 id: user._id
               };
+              console.log(user);
               Utils.sentMailVerificationLink(user,Jwt.sign(tokenData, privateKey)); 
-              return reply({message: 'Confirmation mail is being send to your mail'}).created('/user/');
+              return reply({message: 'Confirmation mail is being send to your mail'});
           }
           return reply(Boom.forbidden(err)); // HTTP 403
         });
@@ -77,6 +74,7 @@ exports.login = {
   },
 
   handler: function(request, reply){
+    console.log(request.payload);
     User.authenticate()(request.payload.email, request.payload.password, function (err, user, message) {
       // There has been an error, do something with it. I just print it to console for demo purposes.
       message = {};

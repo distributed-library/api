@@ -19,7 +19,7 @@ var UserSchema = new Schema({
 
      *       */
     // saves user email, validation of email address is done in paylod
-    userName: {
+    username: {
         type: String,
         unique: true,
         required: true

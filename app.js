@@ -23,7 +23,6 @@ server.route({
     }
 });
 
-server.route(Routes.endpoints);
 
 // Validate function to be injected 
 var validate = function(token, callback) {
@@ -43,8 +42,10 @@ server.register([{
         key: privateKey
     });
 
-    server.route(Routes.endpoints);
 });
+
+
+server.route(Routes.endpoints);
 
 server.register({
     register: Good,
