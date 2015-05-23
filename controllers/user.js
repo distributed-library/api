@@ -5,49 +5,53 @@ var Joi = require('joi'),
     Utils = require('../lib/utils'),
     Jwt = require('hapi-auth-jwt');
 var privateKey = process.env.PRIVATE_PASSPHARSE;
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+var jwt = require('jwt-simple');
+//var passport = require('passport');
+//var LocalStrategy = require('passport-local').Strategy;
+//passport.use(new LocalStrategy(User.authenticate()));
 
+// use static serialize and deserialize of model for passport session support
+//passport.serializeUser(User.serializeUser());
+//passport.deserializeUser(User.deserializeUser());
+//
 exports.getAll = {
-    handler:  function(request, reply){
-      User.find({}, function(err, user){
-        if(!err){
-          return reply(user);
-        }
-        return reply(Boom.badImplementation(err)); // 500 error
-      });
-    }
+  handler:  function(request, reply){
+    User.find({}, function(err, user){
+      if(!err){
+        return reply(user);
+      }
+      return reply(Boom.badImplementation(err)); // 500 error
+    });
+  }
 };
 
 exports.getOne = {
-    handler: function(request, reply){
-      User.findOne({'username': request.params.username}, function(err, user){
-        if(!err){
-          return reply(user);
-        }
-        return reply(Boom.badImplementation(err)); // 500 error
-      });
-    }
+  handler: function(request, reply){
+    User.findOne({'username': request.params.username}, function(err, user){
+      if(!err){
+        return reply(user);
+      }
+      return reply(Boom.badImplementation(err)); // 500 error
+    });
+  }
 };
 
 exports.create = {
-    handler: function(request, reply){
-        request.payload.password = Utils.encrypt(request.payload.password)
-        console.log(Utils);
-        var user = new User(request.payload);
-        user.save(function(err, user){
-          if(!err){
-              var tokenData = {
-                username: user.username,
-                id: user._id
-              };
-              console.log(user);
-              Utils.sentMailVerificationLink(user,Jwt.sign(tokenData, privateKey)); 
-              return reply({message: 'Confirmation mail is being send to your mail'});
-          }
-          return reply(Boom.forbidden(err)); // HTTP 403
-        });
-    }
+  handler: function(request, reply){
+    request.payload.password = Utils.encrypt(request.payload.password)
+    var user = new User(request.payload);
+    user.save(function(err, user){
+      if(!err){
+        var tokenData = {
+          username: user.username,
+      id: user._id
+        };
+        //Utils.sentMailVerificationLink(user,Jwt.sign(tokenData, privateKey)); 
+        return reply({message: 'Confirmation mail is being send to your mail'});
+      }
+      return reply(Boom.forbidden(err)); // HTTP 403
+    });
+  }
 };
 
 function handle_login_error(err, reply){
@@ -61,7 +65,7 @@ function handle_login_error(err, reply){
 }
 
 function login(user, request, reply){
-  
+
 
 }
 
@@ -74,61 +78,59 @@ exports.login = {
   },
 
   handler: function(request, reply){
-    console.log(request.payload);
-    User.authenticate()(request.payload.email, request.payload.password, function (err, user, message) {
-      // There has been an error, do something with it. I just print it to console for demo purposes.
-      message = {};
+    user = User.findOne({"email" : request.payload.email, "password" : Utils.encrypt(request.payload.password)}, function(err, user){
+      var  message = {};
       if (err) {
-          console.error(err);
-          message = {error: 'Failed to login'}
-          return reply(message);
+        console.error(err);
+        message = {error: 'Failed to login'}
+        return reply(message);
       }
 
-      // If the authentication failed user will be false. If it's not false, we store the user
-      // in our session and redirect the user to the hideout
       if (user) {
-          request.auth.session.set(user);
-          return reply({success: true});
+        var payload = { user: user.username };
+        var token = jwt.encode(payload, privateKey);
+        return reply({login: 'success', token: token});
       }
       return reply(message);
     });     
+
   }
 } 
 
 exports.remove = {
-    handler: function (request, reply) {
-        User.findOne({ 'username': request.params.username }, function (err, user) {
-            if (!err && user) {
-                user.remove();
-                return reply({ message: "User deleted successfully"});
-            }
-            if (!err) {
-                return reply(Boom.notFound());
-            }
-            return reply(Boom.badRequest("Could not delete user"));
-        });
-    }
+  handler: function (request, reply) {
+    User.findOne({ 'username': request.params.username }, function (err, user) {
+      if (!err && user) {
+        user.remove();
+        return reply({ message: "User deleted successfully"});
+      }
+      if (!err) {
+        return reply(Boom.notFound());
+      }
+      return reply(Boom.badRequest("Could not delete user"));
+    });
+  }
 };
 
 exports.update = {
-    validate: {
-        payload: {
-            username: Joi.string().required()
-        }
-    },
-    handler: function (request, reply) {
-        User.findOne({ 'username': request.params.username }, function (err, user) {
-            if (!err && user) {
-                user.username = request.payload.username;
-                user.save();
-                return reply(user);
-            }
-            if (!err) {
-                return reply(Boom.notFound());
-            }
-            return reply(Boom.badRequest("Could not delete user"));
-        });
+  validate: {
+    payload: {
+      username: Joi.string().required()
     }
+  },
+  handler: function (request, reply) {
+    User.findOne({ 'username': request.params.username }, function (err, user) {
+      if (!err && user) {
+        user.username = request.payload.username;
+        user.save();
+        return reply(user);
+      }
+      if (!err) {
+        return reply(Boom.notFound());
+      }
+      return reply(Boom.badRequest("Could not delete user"));
+    });
+  }
 };
 
 

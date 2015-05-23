@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    passportLocalMongoose = require('passport-local-mongoose');  ;
+    Schema = mongoose.Schema;
+    //passportLocalMongoose = require('passport-local-mongoose');  ;
 
 /**
  *   * @module  User
@@ -42,9 +42,9 @@ var UserSchema = new Schema({
 
 });
 
-UserSchema.plugin(passportLocalMongoose, { usernameField: 'email', hashField: 'password', usernameLowerCase: true });  
+//UserSchema.plugin(passportLocalMongoose, { usernameField: 'email', hashField: 'password', usernameLowerCase: true });  
 
-var user = mongoose.model('user', UserSchema);
+var user = mongoose.model('User', UserSchema);
 
 /** export schema */
 module.exports = {
